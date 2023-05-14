@@ -6,14 +6,14 @@ using System.Linq;
 namespace Students_Grades.Classes
 {
     /// <summary>
-    /// Provides different operations for student grades.
+    /// Provides operations for student grades.
     /// </summary>
     internal class GradeOperations : IGradeOperations
     {
         private readonly List<Students> _studentList;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="GradeOperations"/> class.
+        /// Initializes a new instance of the GradeOperations class.
         /// </summary>
         /// <param name="studentList"></param>
         public GradeOperations(List<Students> studentList)

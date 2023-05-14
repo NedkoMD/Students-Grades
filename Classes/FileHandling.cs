@@ -14,7 +14,7 @@ namespace Students_Grades
         private readonly List<Students> _studentList;
 
         /// <summary>
-        /// Initializes a new instance of the FileHandling class.
+        /// Initializes a constructor of the FileHandling class.
         /// </summary>
         public FileHandling()
         {
