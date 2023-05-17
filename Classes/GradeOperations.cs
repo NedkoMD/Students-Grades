@@ -10,7 +10,7 @@ namespace Students_Grades.Classes
     /// </summary>
     internal class GradeOperations : IGradeOperations
     {
-        private readonly List<Students> _studentList;
+        public readonly List<Students> _studentList;
 
         /// <summary>
         /// Initializes a new instance of the GradeOperations class.

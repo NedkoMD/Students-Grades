@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Students_Grades.Interfaces
+﻿namespace Students_Grades.Interfaces
 {
     /// <summary>
     /// Represents a student with a name and grade.
