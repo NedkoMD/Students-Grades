@@ -1,4 +1,5 @@
-﻿using Students_Grades.Interfaces;
+﻿using NLog;
+using Students_Grades.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,8 @@ namespace Students_Grades.Classes
     /// </summary>
     internal class GradeOperations : IGradeOperations
     {
-        public readonly List<Students> _studentList;
+        private readonly List<Students> _studentList;
+        private static readonly Logger logger = LogManager.GetCurrentClassLogger();
 
         /// <summary>
         /// Initializes a new instance of the GradeOperations class.
@@ -26,13 +28,20 @@ namespace Students_Grades.Classes
         /// </summary>
         public void ShowAllStudents()
         {
-            Console.WriteLine("Student-Grade ");
-            Console.WriteLine("________________");
-            foreach (Students student in _studentList)
+            if (_studentList.Any())
             {
-                Console.WriteLine($"{student.Name}-{student.Grade}");
+                Console.WriteLine("Student-Grade");
+                Console.WriteLine("________________");
+                foreach (Students student in _studentList)
+                {
+                    Console.WriteLine($"{student.Name}-{student.Grade}");
+                }
+                Console.WriteLine("________________");
             }
-            Console.WriteLine("________________");
+            else
+            {
+                Console.WriteLine(Consts.showAllStudsError);
+            }
         }
 
         /// <summary>
@@ -40,8 +49,15 @@ namespace Students_Grades.Classes
         /// </summary>
         public void AverageGrade()
         {
-            double averageGrade = _studentList.Average(student => student.Grade);
-            Console.WriteLine("Average grade of the students is {0}.", averageGrade);
+            if (_studentList.Any())
+            {
+                double averageGrade = _studentList.Average(student => student.Grade);
+                Console.WriteLine("Average grade of the students is {0}.", averageGrade);
+            }
+            else
+            {
+                Console.WriteLine(Consts.avgGradeError);
+            }
         }
 
         /// <summary>
@@ -49,8 +65,15 @@ namespace Students_Grades.Classes
         /// </summary>
         public void HighestGrade()
         {
-            var highestGradeStudent = _studentList.OrderByDescending(student => student.Grade).First();
-            Console.WriteLine("The student with the highest grade {0} is {1}.", highestGradeStudent.Grade, highestGradeStudent.Name);
+            if (_studentList.Any())
+            {
+                var highestGradeStudent = _studentList.OrderByDescending(student => student.Grade).First();
+                Console.WriteLine("The student with the highest grade {0} is {1}.", highestGradeStudent.Grade, highestGradeStudent.Name);
+            }
+            else
+            {
+                Console.WriteLine(Consts.highestGradeError);
+            }
         }
 
         /// <summary>
@@ -58,8 +81,15 @@ namespace Students_Grades.Classes
         /// </summary>
         public void LowestGrade()
         {
-            var lowestGradeStudent = _studentList.OrderBy(student => student.Grade).First();
-            Console.WriteLine("The student with the lowest grade {0} is {1}.", lowestGradeStudent.Grade, lowestGradeStudent.Name);
+            if (_studentList.Any())
+            {
+                var lowestGradeStudent = _studentList.OrderBy(student => student.Grade).First();
+                Console.WriteLine("The student with the lowest grade {0} is {1}.", lowestGradeStudent.Grade, lowestGradeStudent.Name);
+            }
+            else
+            {
+                Console.WriteLine(Consts.lowestGradeError);
+            }
         }
     }
 }

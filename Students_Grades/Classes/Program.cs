@@ -13,10 +13,12 @@ namespace Students_Grades
         static void Main(string[] args)
         {
             // Create an instance of FileHandling class implementing IFileHandling interface
-            IFileHandling fileHandling = new FileHandling();
+            List<Students> studentList = new List<Students>();
+            IFileRead fileRead = new FileRead(studentList);
+            IFileWrite fileWrite = new FileWrite(studentList);
 
             // Read student data from file and store it in a list
-            List<Students> studentList = fileHandling.Read();
+            studentList = fileRead.Read();
 
             // Create an instance of GradeOperations class implementing IGradeOperations interface,
             // passing the studentList as a parameter to the constructor
@@ -35,7 +37,7 @@ namespace Students_Grades
             operations.LowestGrade();
 
             // Write students to a file
-            fileHandling.Write();
+            fileWrite.Write();
         }
     }
 }
