@@ -21,9 +21,9 @@ namespace Students_Grades.Tests
             // Create a sample student list
             _studentList = new List<Students>
             {
-                new Students { Name = "John", Grade = 85 },
-                new Students { Name = "Emily", Grade = 92 },
-                new Students { Name = "Michael", Grade = 78 }
+                new Students { Name = "Galin Petrov", Grade = 5 },
+                new Students { Name = "Martin Ivanov", Grade = 6 },
+                new Students { Name = "Martina Petrova", Grade = 4 }
             };
         }
 
@@ -40,7 +40,6 @@ namespace Students_Grades.Tests
             Assert.AreEqual(_studentList.Count, result.Count);
             Assert.AreEqual(_studentList[0].Name, result[0].Name);
             Assert.AreEqual(_studentList[0].Grade, result[0].Grade);
-            // Additional assertions for other students
         }
     }
 }
